@@ -1,57 +1,87 @@
 from selenium import webdriver
 from time import sleep
+import datetime
+import time
 
-username = 'na3ne3a'
-password = 'raszebbibelkamounia'
+import secrets
 
-driver = webdriver.Chrome(executable_path='/home/pi/Desktop/automation/seafight/chromedriver')
+def logger(message):
+    ts = time.time()
+    sttime = datetime.datetime.fromtimestamp(ts).strftime('%Y%m%d_%H:%M:%S - ')
+    with open('log.txt', 'a') as logfile:
+        logfile.write(sttime + message + '\n')
 
-driver.get('https://seafight.com')
-sleep(2)
+class SeafightBot():
+    def __init__(self):
+        self.driver = webdriver.Chrome(executable_path='/home/pi/Desktop/automation/seafight/chromedriver')
 
-usr_container = driver.find_element_by_xpath('//*[@id="bgcdw_login_form_username"]')
-usr_container.send_keys(username)
-psw_container = driver.find_element_by_xpath('//*[@id="bgcdw_login_form_password"]')
-psw_container.send_keys(password)
-sleep(2)
+    def login(self, username, password):
 
-login_btn = driver.find_element_by_xpath('//*[@id="loginForm_default_container"]/div[1]/div/form/fieldset[2]/input[1]')
-login_btn.click()
-sleep(2)
+        self.driver.get('https://seafight.com')
+        sleep(2)
 
-marketplace_btn = driver.find_element_by_xpath('//*[@id="MenuMarketplacePic"]/div')
-marketplace_btn.click()
+        usr_container = self.driver.find_element_by_xpath('//*[@id="bgcdw_login_form_username"]')
+        usr_container.send_keys(username)
+        psw_container = self.driver.find_element_by_xpath('//*[@id="bgcdw_login_form_password"]')
+        psw_container.send_keys(password)
+        sleep(2)
 
-list_items=[
-    '//*[@id="CURRENCY_4"]/div[1]/input[1]',
-    '//*[@id="ACTIONITEM_43"]/div[1]/input[1]',
-    '//*[@id="ACTIONITEM_38"]/div[1]/input[1]',
-    '//*[@id="AMMUNITION_120"]/div[1]/input[1]',
-    '//*[@id="AMMUNITION_51"]/div[1]/input[1]',
-    '//*[@id="AMMUNITION_186"]/div[1]/input[1]',
-    '//*[@id="CREW_95"]/div[1]/input[1]',
-    '//*[@id="HARPOON_75"]/div[1]/input[1]',
-    '//*[@id="NONPERISHABLEGOODS_70"]/div[1]/input[1]',
-    '//*[@id="NONPERISHABLEGOODS_77"]/div[1]/input[1]',
-    '//*[@id="NONPERISHABLEGOODS_65"]/div[1]/input[1]',
-    '//*[@id="NONPERISHABLEGOODS_82"]/div[1]/input[1]',
-    '//*[@id="NONPERISHABLEGOODS_83"]/div[1]/input[1]',
-    '//*[@id="SAIL_50"]/div[1]/input[1]',
-    '//*[@id="WEAPON_121"]/div[1]/input[1]',
-    '//*[@id="SHIPEXTENSION_7"]/div[1]/input[1]',
-    '//*[@id="SHIPEXTENSION_51"]/div[1]/input[1]'
-    ]
-sleep(2)
-
-
-item_container = driver.find_element_by_xpath(list_items[5])
-scr_down_btn = driver.find_element_by_xpath('//*[@id="sfcontent_marketplace_eliteitems_list_vscrollerbaseend"]')
-while(True):
-    try:
-        item_container.send_keys('2')
-        break
-    except:
-        scr_down_btn.click()
+        login_btn = self.driver.find_element_by_xpath('//*[@id="loginForm_default_container"]/div[1]/div/form/fieldset[2]/input[1]')
+        login_btn.click()
+        sleep(2)
         
-# same for submission of money
+        marketplace_btn = self.driver.find_element_by_xpath('//*[@id="MenuMarketplacePic"]/div')
+        marketplace_btn.click()
+        
+        logger('logged in to: ' + username)
+        
+    def bet(self, item, amount):
+        list_items=[
+            ['Kristalle','//*[@id="CURRENCY_4"]'], #0
+            ['Ogoun-Amulett','//*[@id="ACTIONITEM_43"]'], #1
+            ['Lichtmedallion','//*[@id="ACTIONITEM_38"]'], #2
+            ['Heilmunition','//*[@id="AMMUNITION_120"]'], #3
+            ['Explosivmunition','//*[@id="AMMUNITION_51"]'], #4
+            ['Voodoo-Munition','//*[@id="AMMUNITION_186"]'], #5
+            ['Waffenmeister','//*[@id="CREW_95"]'], #6
+            ['Eisenharpunen','//*[@id="HARPOON_75"]'], #7
+            ['Kette','//*[@id="NONPERISHABLEGOODS_70"]'], #8
+            ['Truhenschlüssel','//*[@id="NONPERISHABLEGOODS_77"]'], #9
+            ['Kettenhemd','//*[@id="NONPERISHABLEGOODS_65"]'], #10
+            ['Enterbeil','//*[@id="NONPERISHABLEGOODS_82"]'], #11
+            ['Steinschlosspistole','//*[@id="NONPERISHABLEGOODS_83"]'], #12
+            ['Hochsegel','//*[@id="SAIL_50"]'], #13
+            ['Heilkanone Stufe 2','//*[@id="WEAPON_121"]'], #14
+            ['Galionsfigur: Ran','//*[@id="SHIPEXTENSION_7"]'], #15
+            ['Haltholzbalken','//*[@id="SHIPEXTENSION_51"]'] #16
+            ]
+        sleep(2)
 
+        item_container = self.driver.find_element_by_xpath(list_items[item][1]+'/div[1]/input[1]')
+        item_submit_btn = self.driver.find_element_by_xpath(list_items[item][1]+'/div[1]/input[2]')
+        scr_down_btn = self.driver.find_element_by_xpath('//*[@id="sfcontent_marketplace_eliteitems_list_vscrollerbaseend"]')
+        
+        while(True):
+            try:
+                item_container.send_keys(str(amount))
+                break
+            except:
+                scr_down_btn.click()
+                
+        sleep(1)
+        
+        while(True):
+            try:
+                item_submit_btn.click()
+                break
+            except:
+                scr_down_btn.click()
+                
+        logger('bet ' + str(amount) + 'on item ' + list_items[item][0])
+        sleep(2)
+        self.driver.refresh()
+        
+bot = SeafightBot()
+bot.login(secrets.username, secrets.password)
+bot.bet(14,1000)
+bot.bet(16,10000)

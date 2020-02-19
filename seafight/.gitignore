@@ -1,3 +1,4 @@
 # files to ignore :
 chromedriver
-bot_seafight.log
+log.txt
+secrets.py
