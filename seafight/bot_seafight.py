@@ -1,4 +1,9 @@
+#!/usr/bin/python3.5
+# -*- coding: utf-8 -*- 
+
 from selenium import webdriver
+#from selenium.webdriver.chrome.options import Options
+
 from time import sleep
 import datetime
 import time
@@ -13,7 +18,13 @@ def logger(message):
 
 class SeafightBot():
     def __init__(self):
+        #chrome_options = Options()
+        #chrome_options.add_argument("--disable-extensions")
+        #chrome_options.add_argument("--disable-gpu")
+        #chrome_options.add_argument("--no-sandbox")
+        #self.driver = webdriver.Chrome(options=chrome_options, executable_path='/home/pi/Desktop/automation/seafight/chromedriver')
         self.driver = webdriver.Chrome(executable_path='/home/pi/Desktop/automation/seafight/chromedriver')
+        
 
     def login(self, username, password):
 
