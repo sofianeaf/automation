@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*- 
 
 from selenium import webdriver
-#from selenium.webdriver.chrome.options import Options
+from selenium.webdriver.chrome.options import Options
 
 from time import sleep
 import datetime
@@ -13,17 +13,17 @@ import secrets
 def logger(message):
     ts = time.time()
     sttime = datetime.datetime.fromtimestamp(ts).strftime('%Y%m%d_%H:%M:%S - ')
-    with open('log.txt', 'a') as logfile:
+    with open('/home/pi/Desktop/automation/seafight/log.txt', 'a') as logfile:
         logfile.write(sttime + message + '\n')
 
 class SeafightBot():
     def __init__(self):
-        #chrome_options = Options()
+        chrome_options = Options()
         #chrome_options.add_argument("--disable-extensions")
         #chrome_options.add_argument("--disable-gpu")
-        #chrome_options.add_argument("--no-sandbox")
-        #self.driver = webdriver.Chrome(options=chrome_options, executable_path='/home/pi/Desktop/automation/seafight/chromedriver')
-        self.driver = webdriver.Chrome(executable_path='/home/pi/Desktop/automation/seafight/chromedriver')
+        chrome_options.add_argument("--no-sandbox")
+        self.driver = webdriver.Chrome(options=chrome_options, executable_path='/home/pi/Desktop/automation/seafight/chromedriver')
+        #self.driver = webdriver.Chrome(executable_path='/home/pi/Desktop/automation/seafight/chromedriver')
         
 
     def login(self, username, password):
@@ -45,6 +45,11 @@ class SeafightBot():
         marketplace_btn.click()
         
         logger('logged in to: ' + username)
+        
+    def close(self):
+
+        self.driver.stop_client()
+        self.driver.close()    
         
     def bet(self, item, amount):
         list_items=[
@@ -88,11 +93,12 @@ class SeafightBot():
             except:
                 scr_down_btn.click()
                 
-        logger('bet ' + str(amount) + 'on item ' + list_items[item][0])
+        logger('bet ' + str(amount) + ' on item ' + list_items[item][0])
         sleep(2)
         self.driver.refresh()
         
 bot = SeafightBot()
 bot.login(secrets.username, secrets.password)
-bot.bet(14,1000)
 bot.bet(16,10000)
+sleep(2)
+bot.close()
