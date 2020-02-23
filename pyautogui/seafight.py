@@ -16,14 +16,14 @@ sleep(2)
 """
 for i in range(0, 10):
     pyautogui.moveTo(screenWidth/2, screenHeight/2)
-    
-    
+
+
     btn = 'left'
     pyautogui.keyDown(btn)
     sleep(1.3)
     pyautogui.keyUp(btn)
 
-    
+
     pyautogui.click()
     sleep(2) # wait for boat to move
     try:
@@ -41,10 +41,34 @@ class SeafightGameBot():
         self.number = 1
 
     def shoot(self):
-        btn = '´'
+        btn = 'q'
         pyautogui.keyDown(btn)
-        
 
-bot = SeafightGameBot()
-bot.shoot()
-    
+
+#bot = SeafightGameBot()
+#bot.shoot()
+
+btn_attack = 'q'
+btn_cancel_attack = 'w'
+btn_toggle_opponents = 'r'
+btn_set_corse = 't'
+btn_to_the_ship = 'z'
+btn_repair = 'u'
+
+while(True):
+    print(pyautogui.locateCenterOnScreen('ship_1_down_right.png'))
+    print(pyautogui.locateCenterOnScreen('ship_1_down_left.png'))
+    print(pyautogui.locateCenterOnScreen('ship_1_up_right.png'))
+    print(pyautogui.locateCenterOnScreen('ship_1_up_left.png'))
+    sleep(0.1)
+    print(pyautogui.locateCenterOnScreen('ship_2_down_right.png'))
+    print(pyautogui.locateCenterOnScreen('ship_2_down_left.png'))
+    print(pyautogui.locateCenterOnScreen('ship_2_up_right.png'))
+    print(pyautogui.locateCenterOnScreen('ship_2_up_left.png'))
+    sleep(0.1)
+    print(pyautogui.locateCenterOnScreen('ship_3_down_right.png'))
+    print(pyautogui.locateCenterOnScreen('ship_3_down_left.png'))
+    print(pyautogui.locateCenterOnScreen('ship_3_up_right.png'))
+    print(pyautogui.locateCenterOnScreen('ship_3_up_left.png'))
+    sleep(0.1)
+#pyautogui.press(btn_attack)
