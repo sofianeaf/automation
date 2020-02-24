@@ -1,5 +1,6 @@
 import pyautogui
 from time import sleep
+import screenshotUtil as pag
 
 # get screen size
 #screenWidth, screenHeight = pyautogui.size()
@@ -55,20 +56,12 @@ btn_set_corse = 't'
 btn_to_the_ship = 'z'
 btn_repair = 'u'
 
+im1 = pyautogui.screenshot()
+#print(help(pyautogui))
+
 while(True):
-    print(pyautogui.locateCenterOnScreen('ship_1_down_right.png'))
-    print(pyautogui.locateCenterOnScreen('ship_1_down_left.png'))
-    print(pyautogui.locateCenterOnScreen('ship_1_up_right.png'))
-    print(pyautogui.locateCenterOnScreen('ship_1_up_left.png'))
-    sleep(0.1)
-    print(pyautogui.locateCenterOnScreen('ship_2_down_right.png'))
-    print(pyautogui.locateCenterOnScreen('ship_2_down_left.png'))
-    print(pyautogui.locateCenterOnScreen('ship_2_up_right.png'))
-    print(pyautogui.locateCenterOnScreen('ship_2_up_left.png'))
-    sleep(0.1)
-    print(pyautogui.locateCenterOnScreen('ship_3_down_right.png'))
-    print(pyautogui.locateCenterOnScreen('ship_3_down_left.png'))
-    print(pyautogui.locateCenterOnScreen('ship_3_up_right.png'))
-    print(pyautogui.locateCenterOnScreen('ship_3_up_left.png'))
-    sleep(0.1)
+    print(pag.locateCenterOnScreen_tuna('ship_1_down_right.png', 'ship_1_down_left.png', 'ship_1_up_right.png', 'ship_1_up_left.png'))
+
+
+
 #pyautogui.press(btn_attack)
