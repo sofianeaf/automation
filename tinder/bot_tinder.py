@@ -1,20 +1,27 @@
+#!/usr/bin/python3.5
+# -*- coding: utf-8 -*- 
+
 from selenium import webdriver
+from selenium.webdriver.chrome.options import Options
 from time import sleep
 
-username = 'your_username'
-password = 'your_password'
+import secrets
 
 class TinderBot():
     def __init__(self):
-        self.driver = webdriver.Chrome(executable_path='/home/pi/Desktop/chromedriver')
-        #self.driver = webdriver.Chrome()
+        chrome_options = Options()
+        #chrome_options.add_argument("--disable-extensions")
+        #chrome_options.add_argument("--disable-gpu")
+        chrome_options.add_argument("--no-sandbox")
+        self.driver = webdriver.Chrome(options=chrome_options, executable_path='/home/pi/Desktop/automation/tinder/chromedriver')
+        
 
-    def login(self):
+    def login(self, username, password):
         self.driver.get('https://tinder.com')
 
-        sleep(2)
+        sleep(5)
 
-        fb_btn = self.driver.find_element_by_xpath('//*[@id="modal-manager"]/div/div/div/div/div[3]/div[2]/button')
+        fb_btn = self.driver.find_element_by_xpath('//*[@id="modal-manager"]/div/div/div/div/div[3]/span/div[2]/button')
         fb_btn.click()
 
         # switch to login popup
@@ -66,4 +73,4 @@ class TinderBot():
         match_popup.click()
 
 bot = TinderBot()
-bot.login()
+bot.login(secrets.username, secrets.password)

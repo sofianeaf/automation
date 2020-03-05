@@ -99,6 +99,6 @@ class SeafightBot():
         
 bot = SeafightBot()
 bot.login(secrets.username, secrets.password)
-bot.bet(16,10000)
+bot.bet(16,145000)
 sleep(2)
 bot.close()

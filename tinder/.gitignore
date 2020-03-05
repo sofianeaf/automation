@@ -1,0 +1,5 @@
+# files to ignore :
+chromedriver
+log.txt
+secrets.py
+__pycache__
