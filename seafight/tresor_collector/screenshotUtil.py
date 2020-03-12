@@ -92,6 +92,7 @@ def locateAll(needleImage, haystackImage, grayscale=False, limit=None):
         haystackFileObj.close()
 
 
+
 def locate(needleImage, haystackImage, grayscale=False):
     # Note: The gymnastics in this function is because we want to make sure to exhaust the iterator so that the needle and haystack files are closed in locateAll.
     points = tuple(locateAll(needleImage, haystackImage, grayscale, 1))
@@ -129,6 +130,12 @@ def locateOnScreen_tuna(image1, image2, image3, image4, grayscale=False,region=N
                 if 'fp' in dir(screenshotIm) and screenshotIm.fp is not None:
                     screenshotIm.fp.close() # Screenshots on Windows won't have an fp since they came from ImageGrab, not a file.
     return retVal
+
+
+
+
+
+
 
 
 def locateAllOnScreen(image, grayscale=False, limit=None, region=None):
@@ -244,3 +251,4 @@ else:
 
 
 grab = screenshot # for compatibility with Pillow/PIL's ImageGrab module.
+
