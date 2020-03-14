@@ -13,6 +13,7 @@ class TinderBot():
 		chrome_options = Options()
 		#chrome_options.add_argument("--disable-extensions")
 		#chrome_options.add_argument("--disable-gpu")
+		chrome_options.add_argument("--disable-notifications")
 		chrome_options.add_argument("--no-sandbox")
 		self.driver = webdriver.Chrome(options=chrome_options, executable_path='/home/sofiane/automation/tinder/chromedriver')
         
