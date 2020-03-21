@@ -1,5 +1,5 @@
 #!/usr/bin/python3.5
-# -*- coding: utf-8 -*- 
+# -*- coding: utf-8 -*-
 
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
@@ -18,29 +18,33 @@ def logger(message):
 
 class SeafightBot():
 	def __init__(self):
+
 		options = webdriver.ChromeOptions()
-		#options = Options()
-		#options.add_argument("--disable-extensions")
-		options.add_argument("--disable-notifications")
-		#options.add_argument("--disable-gpu")
-		options.add_argument("--no-sandbox")
-		
-		prefs = {
+
+		options.add_argument("--disable-infobars")
+		options.add_argument("start-maximized")
+		options.add_argument("--disable-extensions")
+
+		options.add_experimental_option("prefs", {
+			#"profile.default_content_setting_values.plugins": 1,
+    		#"profile.content_settings.plugin_whitelist.adobe-flash-player": 1,
+    		#"profile.content_settings.exceptions.plugins.*,*.per_resource.adobe-flash-player": 1,
+    		#"PluginsAllowedForUrls": "https://int12.seafight.com"
 			"profile.default_content_setting_values.plugins": 1,
 			"profile.content_settings.plugin_whitelist.adobe-flash-player": 1,
 			"profile.content_settings.exceptions.plugins.*,*.per_resource.adobe-flash-player": 1,
-			"profile.content_settings.exceptions.plugins.*,*.setting": 1
-		}
-		
-		options.add_experimental_option("prefs", prefs)
+			"profile.content_settings.exceptions.plugins.*,*.setting": 1,
+		    "profile.default_content_setting_values.plugins": 1,
+			"PluginsAllowedForUrls": "https://int12.seafight.com/"
+		})
+
 		options.add_argument('--disable-features=EnableEphemeralFlashPermission')
 		options.add_argument('--disable-infobars')
 		options.add_argument("--ppapi-flash-version=32.0.0.101")
 		options.add_argument("--ppapi-flash-path=/usr/lib/pepperflashplugin-nonfree/libpepflashplayer.so")
-		
+
 		self.driver = webdriver.Chrome(options=options, executable_path='/home/sofiane/automation/seafight/npc/chromedriver')
-		#self.driver = webdriver.Chrome(executable_path='/home/pi/Desktop/automation/seafight/chromedriver')
-        
+
         # https://github.com/zalando/zalenium/issues/497
 
 	def login(self, username, password):
@@ -56,12 +60,8 @@ class SeafightBot():
 
 		login_btn = self.driver.find_element_by_xpath('//*[@id="loginForm_default_container"]/div[1]/div/form/fieldset[2]/input[1]')
 		login_btn.click()
-		sleep(2)
 
-		marketplace_btn = self.driver.find_element_by_xpath('//*[@id="MenuMarketplacePic"]/div')
-		marketplace_btn.click()
-
-		logger('logged in to: ' + username)
+		logger('logged-in to: ' + username)
 		sleep(2)
 
 		stat_to_play_btn = self.driver.find_element_by_xpath('//*[@id="start-play-btn"]')
@@ -69,19 +69,21 @@ class SeafightBot():
 		sleep(2)
 
 		base_window = self.driver.window_handles[0]
-		self.driver.switch_to_window(self.driver.window_handles[1])
+		game_window = self.driver.window_handles[1]
 
-		#allow_flashplayer_link = self.driver.find_element_by_link_text('http://get.adobe.com/flashplayer')
+		self.driver.switch_to_window(game_window)
+		sleep(5)
+
 		allow_flashplayer_link = self.driver.find_element_by_xpath('//*[@id="noflashcheck"]/a')
 		allow_flashplayer_link.click()
 
 	def close(self):
 
 		self.driver.stop_client()
-		self.driver.close()    
-        
-    
-        
+		self.driver.close()
+
+
+
 bot = SeafightBot()
 bot.login(secrets.username, secrets.password)
 

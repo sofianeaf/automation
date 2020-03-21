@@ -1,0 +1,266 @@
+[1584750633,284][INFO]: Starting ChromeDriver 75.0.3770.140 (2d9f97485c7b07dc18a74666574f19176731995c-refs/branch-heads/3770@{#1155})
+[1584750633,284][INFO]: Please protect ports used by ChromeDriver and related test frameworks to prevent access by malicious code.
+[1584750634,271][INFO]: [32c10f791e726bd7058843c13ea26959] COMMAND InitSession {
+   "capabilities": {
+      "alwaysMatch": {
+         "browserName": "chrome",
+         "goog:chromeOptions": {
+            "args": [ "--disable-notifications", "--no-sandbox", "--disable-features=EnableEphemeralFlashPermission" ],
+            "extensions": [  ],
+            "prefs": {
+               "PluginsAllowedForUrls": "BEST URL EVER",
+               "profile.content_settings.exceptions.plugins.*,*.per_resource.adobe-flash-player": 1,
+               "profile.content_settings.plugin_whitelist.adobe-flash-player": 1,
+               "profile.default_content_setting_values.plugins": 1
+            }
+         },
+         "platformName": "any"
+      },
+      "firstMatch": [ {
+
+      } ]
+   },
+   "desiredCapabilities": {
+      "browserName": "chrome",
+      "goog:chromeOptions": {
+         "args": [ "--disable-notifications", "--no-sandbox", "--disable-features=EnableEphemeralFlashPermission" ],
+         "extensions": [  ],
+         "prefs": {
+            "PluginsAllowedForUrls": "BEST URL EVER",
+            "profile.content_settings.exceptions.plugins.*,*.per_resource.adobe-flash-player": 1,
+            "profile.content_settings.plugin_whitelist.adobe-flash-player": 1,
+            "profile.default_content_setting_values.plugins": 1
+         }
+      },
+      "platform": "ANY",
+      "version": ""
+   }
+}
+[1584750634,272][INFO]: Populating Preferences file: {
+   "PluginsAllowedForUrls": "BEST URL EVER",
+   "alternate_error_pages": {
+      "enabled": false
+   },
+   "autofill": {
+      "enabled": false
+   },
+   "browser": {
+      "check_default_browser": false
+   },
+   "distribution": {
+      "import_bookmarks": false,
+      "import_history": false,
+      "import_search_engine": false,
+      "make_chrome_default_for_user": false,
+      "skip_first_run_ui": true
+   },
+   "dns_prefetching": {
+      "enabled": false
+   },
+   "profile": {
+      "content_settings": {
+         "exceptions": {
+            "plugins": {
+               "*,*": {
+                  "per_resource": {
+                     "adobe-flash-player": 1
+                  }
+               }
+            }
+         },
+         "pattern_pairs": {
+            "https://*,*": {
+               "media-stream": {
+                  "audio": "Default",
+                  "video": "Default"
+               }
+            }
+         },
+         "plugin_whitelist": {
+            "adobe-flash-player": 1
+         }
+      },
+      "default_content_setting_values": {
+         "geolocation": 1,
+         "plugins": 1
+      },
+      "default_content_settings": {
+         "geolocation": 1,
+         "mouselock": 1,
+         "notifications": 1,
+         "popups": 1,
+         "ppapi-broker": 1
+      },
+      "password_manager_enabled": false
+   },
+   "safebrowsing": {
+      "enabled": false
+   },
+   "search": {
+      "suggest_enabled": false
+   },
+   "translate": {
+      "enabled": false
+   }
+}
+[1584750634,272][INFO]: Populating Local State file: {
+   "background_mode": {
+      "enabled": false
+   },
+   "ssl": {
+      "rev_checking": {
+         "enabled": false
+      }
+   }
+}
+[1584750634,273][INFO]: Launching chrome: /usr/bin/google-chrome --disable-background-networking --disable-client-side-phishing-detection --disable-default-apps --disable-features=EnableEphemeralFlashPermission --disable-hang-monitor --disable-notifications --disable-popup-blocking --disable-prompt-on-repost --disable-sync --disable-web-resources --enable-automation --enable-blink-features=ShadowDOMV0 --enable-logging --force-fieldtrials=SiteIsolationExtensions/Control --ignore-certificate-errors --load-extension=/tmp/.com.google.Chrome.l7qFG3/internal --log-level=0 --no-first-run --no-sandbox --password-store=basic --remote-debugging-port=0 --test-type=webdriver --use-mock-keychain --user-data-dir=/tmp/.com.google.Chrome.m955ph data:,
+[1584750634,723][INFO]: resolved localhost to ["127.0.0.1"]
+[1584750634,793][INFO]: [32c10f791e726bd7058843c13ea26959] RESPONSE InitSession {
+   "capabilities": {
+      "acceptInsecureCerts": false,
+      "browserName": "chrome",
+      "browserVersion": "75.0.3770.100",
+      "chrome": {
+         "chromedriverVersion": "75.0.3770.140 (2d9f97485c7b07dc18a74666574f19176731995c-refs/branch-heads/3770@{#1155})",
+         "userDataDir": "/tmp/.com.google.Chrome.m955ph"
+      },
+      "goog:chromeOptions": {
+         "debuggerAddress": "localhost:41173"
+      },
+      "networkConnectionEnabled": false,
+      "pageLoadStrategy": "normal",
+      "platformName": "linux",
+      "proxy": {
+
+      },
+      "setWindowRect": true,
+      "strictFileInteractability": false,
+      "timeouts": {
+         "implicit": 0,
+         "pageLoad": 300000,
+         "script": 30000
+      },
+      "unhandledPromptBehavior": "dismiss and notify"
+   },
+   "sessionId": "32c10f791e726bd7058843c13ea26959"
+}
+[1584750634,797][INFO]: [32c10f791e726bd7058843c13ea26959] COMMAND Navigate {
+   "url": "https://seafight.com"
+}
+[1584750634,797][INFO]: Waiting for pending navigations...
+[1584750634,813][INFO]: Done waiting for pending navigations. Status: ok
+[1584750635,113][INFO]: Waiting for pending navigations...
+[1584750636,782][INFO]: Done waiting for pending navigations. Status: ok
+[1584750636,782][INFO]: [32c10f791e726bd7058843c13ea26959] RESPONSE Navigate
+[1584750638,785][INFO]: [32c10f791e726bd7058843c13ea26959] COMMAND FindElement {
+   "using": "xpath",
+   "value": "//*[@id=\"bgcdw_login_form_username\"]"
+}
+[1584750638,785][INFO]: Waiting for pending navigations...
+[1584750638,787][INFO]: Done waiting for pending navigations. Status: ok
+[1584750638,808][INFO]: Waiting for pending navigations...
+[1584750638,809][INFO]: Done waiting for pending navigations. Status: ok
+[1584750638,809][INFO]: [32c10f791e726bd7058843c13ea26959] RESPONSE FindElement {
+   "element-6066-11e4-a52e-4f735466cecf": "c15724b2-b234-4f83-94c8-974ca09301d1"
+}
+[1584750638,811][INFO]: [32c10f791e726bd7058843c13ea26959] COMMAND TypeElement {
+   "id": "c15724b2-b234-4f83-94c8-974ca09301d1",
+   "text": "na3ne3a",
+   "value": [ "n", "a", "3", "n", "e", "3", "a" ]
+}
+[1584750638,811][INFO]: Waiting for pending navigations...
+[1584750638,812][INFO]: Done waiting for pending navigations. Status: ok
+[1584750638,898][INFO]: Waiting for pending navigations...
+[1584750638,899][INFO]: Done waiting for pending navigations. Status: ok
+[1584750638,899][INFO]: [32c10f791e726bd7058843c13ea26959] RESPONSE TypeElement
+[1584750638,900][INFO]: [32c10f791e726bd7058843c13ea26959] COMMAND FindElement {
+   "using": "xpath",
+   "value": "//*[@id=\"bgcdw_login_form_password\"]"
+}
+[1584750638,900][INFO]: Waiting for pending navigations...
+[1584750638,901][INFO]: Done waiting for pending navigations. Status: ok
+[1584750638,912][INFO]: Waiting for pending navigations...
+[1584750638,914][INFO]: Done waiting for pending navigations. Status: ok
+[1584750638,914][INFO]: [32c10f791e726bd7058843c13ea26959] RESPONSE FindElement {
+   "element-6066-11e4-a52e-4f735466cecf": "fe3a8997-8d26-45bc-90d4-372018b8374f"
+}
+[1584750638,916][INFO]: [32c10f791e726bd7058843c13ea26959] COMMAND TypeElement {
+   "id": "fe3a8997-8d26-45bc-90d4-372018b8374f",
+   "text": "raszebbibelkamounia",
+   "value": [ "r", "a", "s", "z", "e", "b", "b", "i", "b", "e", "l", "k", "a", "m", "o", "u", "n", "i", "a" ]
+}
+[1584750638,916][INFO]: Waiting for pending navigations...
+[1584750638,917][INFO]: Done waiting for pending navigations. Status: ok
+[1584750639,050][INFO]: Waiting for pending navigations...
+[1584750639,051][INFO]: Done waiting for pending navigations. Status: ok
+[1584750639,051][INFO]: [32c10f791e726bd7058843c13ea26959] RESPONSE TypeElement
+[1584750641,055][INFO]: [32c10f791e726bd7058843c13ea26959] COMMAND FindElement {
+   "using": "xpath",
+   "value": "//*[@id=\"loginForm_default_container\"]/div[1]/div/form/fieldset[2]/input[1]"
+}
+[1584750641,055][INFO]: Waiting for pending navigations...
+[1584750641,056][INFO]: Done waiting for pending navigations. Status: ok
+[1584750641,074][INFO]: Waiting for pending navigations...
+[1584750641,076][INFO]: Done waiting for pending navigations. Status: ok
+[1584750641,076][INFO]: [32c10f791e726bd7058843c13ea26959] RESPONSE FindElement {
+   "element-6066-11e4-a52e-4f735466cecf": "b901416f-48a8-4c78-a988-30e0440730d9"
+}
+[1584750641,078][INFO]: [32c10f791e726bd7058843c13ea26959] COMMAND ClickElement {
+   "id": "b901416f-48a8-4c78-a988-30e0440730d9"
+}
+[1584750641,078][INFO]: Waiting for pending navigations...
+[1584750641,079][INFO]: Done waiting for pending navigations. Status: ok
+[1584750641,176][INFO]: Waiting for pending navigations...
+[1584750643,325][INFO]: Done waiting for pending navigations. Status: ok
+[1584750643,325][INFO]: [32c10f791e726bd7058843c13ea26959] RESPONSE ClickElement
+[1584750645,330][INFO]: [32c10f791e726bd7058843c13ea26959] COMMAND FindElement {
+   "using": "xpath",
+   "value": "//*[@id=\"start-play-btn\"]"
+}
+[1584750645,330][INFO]: Waiting for pending navigations...
+[1584750645,331][INFO]: Done waiting for pending navigations. Status: ok
+[1584750645,347][INFO]: Waiting for pending navigations...
+[1584750645,349][INFO]: Done waiting for pending navigations. Status: ok
+[1584750645,349][INFO]: [32c10f791e726bd7058843c13ea26959] RESPONSE FindElement {
+   "element-6066-11e4-a52e-4f735466cecf": "9e13578b-7a95-438a-93c6-2eba6af18e7f"
+}
+[1584750645,350][INFO]: [32c10f791e726bd7058843c13ea26959] COMMAND ClickElement {
+   "id": "9e13578b-7a95-438a-93c6-2eba6af18e7f"
+}
+[1584750645,350][INFO]: Waiting for pending navigations...
+[1584750645,351][INFO]: Done waiting for pending navigations. Status: ok
+[1584750645,449][INFO]: Waiting for pending navigations...
+[1584750645,457][INFO]: Done waiting for pending navigations. Status: ok
+[1584750645,457][INFO]: [32c10f791e726bd7058843c13ea26959] RESPONSE ClickElement
+[1584750647,460][INFO]: [32c10f791e726bd7058843c13ea26959] COMMAND GetWindows {
+
+}
+[1584750647,462][INFO]: [32c10f791e726bd7058843c13ea26959] RESPONSE GetWindows [ "CDwindow-87CE52428320EA6B846A98247DFF942E", "CDwindow-B8EF895E83E48AE390ED217B9EFB8B92" ]
+[1584750647,463][INFO]: [32c10f791e726bd7058843c13ea26959] COMMAND GetWindows {
+
+}
+[1584750647,466][INFO]: [32c10f791e726bd7058843c13ea26959] RESPONSE GetWindows [ "CDwindow-87CE52428320EA6B846A98247DFF942E", "CDwindow-B8EF895E83E48AE390ED217B9EFB8B92" ]
+[1584750647,468][INFO]: [32c10f791e726bd7058843c13ea26959] COMMAND SwitchToWindow {
+   "handle": "CDwindow-B8EF895E83E48AE390ED217B9EFB8B92"
+}
+[1584750647,472][INFO]: [32c10f791e726bd7058843c13ea26959] RESPONSE SwitchToWindow
+[1584750647,474][INFO]: [32c10f791e726bd7058843c13ea26959] COMMAND FindElement {
+   "using": "xpath",
+   "value": "//*[@id=\"noflashcheck\"]/a"
+}
+[1584750647,474][INFO]: resolved localhost to ["127.0.0.1"]
+[1584750647,484][INFO]: Waiting for pending navigations...
+[1584750647,496][INFO]: Done waiting for pending navigations. Status: ok
+[1584750647,508][INFO]: Waiting for pending navigations...
+[1584750647,511][INFO]: Done waiting for pending navigations. Status: ok
+[1584750647,511][INFO]: [32c10f791e726bd7058843c13ea26959] RESPONSE FindElement {
+   "element-6066-11e4-a52e-4f735466cecf": "6c9f0eba-3574-4211-aece-da7682026ab8"
+}
+[1584750647,513][INFO]: [32c10f791e726bd7058843c13ea26959] COMMAND ClickElement {
+   "id": "6c9f0eba-3574-4211-aece-da7682026ab8"
+}
+[1584750647,513][INFO]: Waiting for pending navigations...
+[1584750647,514][INFO]: Done waiting for pending navigations. Status: ok
+[1584750647,577][INFO]: Waiting for pending navigations...
+[1584750647,596][INFO]: Done waiting for pending navigations. Status: ok
+[1584750647,596][INFO]: [32c10f791e726bd7058843c13ea26959] RESPONSE ClickElement
