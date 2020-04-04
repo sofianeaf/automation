@@ -45,7 +45,7 @@ def loot():
             a = pyautogui.locateOnScreen('full_img/asus/stop_active.png', grayscale=True)
             if a == None:
                 break
-            sleep(10)
+            sleep(5)
         print("kill done")
 
         # repair if needed
