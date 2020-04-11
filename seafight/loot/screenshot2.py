@@ -39,10 +39,9 @@ while(1):
             x = ships[0][0] # 2 to 3 change per sec
             y = ships[0][1] # 4 change per sec
             print(x,y)
-            pyautogui.click(x, y)
+            pyautogui.click(x,y - 20)
             sleep(0.2)
-            y = y - 20 #target ship
-            pyautogui.click(x,y)
+            pyautogui.click(x,y - 20)
             sleep(0.2)
             pyautogui.click(x,y)
             # flag for repetition + prediction of trajectoryu
