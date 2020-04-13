@@ -5,7 +5,7 @@ from time import sleep
 print(width,height)
 
 # import pyautogui
-# uuu
+# pyautogui.displayMousePosition()
 
 btn_attack = 'q'
 btn_cancel_attack = 'w'
@@ -43,30 +43,31 @@ while(1):
         alert_cnt = alert_cnt + 1
         print("looking for target state",alert_cnt)
         # already shooting at start time
-        a = pyautogui.locateOnScreen('full_img/asus/stop_active.png', grayscale=True, region=(476,677,455,59))
+        a = pyautogui.locateOnScreen('full_img/stop_active.png', grayscale=True, region=(752,832,470,60)) #
         if a != None:
             alert_cnt = 0
             break
         # hit something
         pyautogui.typewrite([btn_toggle_opponents, btn_attack], interval=1)
-        a = pyautogui.locateOnScreen('full_img/asus/stop_active.png', grayscale=True, region=(476,677,455,59))
+        a = pyautogui.locateOnScreen('full_img/stop_active.png', grayscale=True, region=(752,832,470,60)) #, region=(476,677,455,59)
         # EXIT CONDITION
         if a != None:
             print("found target")
             alert_cnt = 0
             break
         # EXIT ALERT
-        #if alert_cnt == 50:
-            #alert_cnt = 0
+        if alert_cnt == 100:
+            alert_cnt = 0
+            alert_flag = True
             # move around to prevent log out
             # move around to prevent log out
             # move around to prevent log out
-            #break
+            break
         sleep(1)
 
     # TRAVEL TO TARGET
     for i in range(0,4):
-        a = pyautogui.locateCenterOnScreen('yellow_dot.png', grayscale=False, region=(337,145,761,580))
+        a = pyautogui.locateCenterOnScreen('full_img/yellow_dot.png', grayscale=False, region=(611,296,769,590)) #, region=(337,145,761,580)
         if a != None:
             sleep(1)
             pyautogui.click(a)
@@ -76,7 +77,7 @@ while(1):
     while(alert_flag == False):
         alert_cnt = alert_cnt + 1
         print("hit target state",alert_cnt)
-        a = pyautogui.locateOnScreen('full_img/asus/stop_active.png', grayscale=True, region=(476,677,455,59))
+        a = pyautogui.locateOnScreen('full_img/stop_active.png', grayscale=True, region=(752,832,470,60)) #, region=(476,677,455,59)
         # EXIT CONDITION
         if a == None:
             print("kill done")
@@ -93,7 +94,7 @@ while(1):
     while(alert_flag == True):
         alert_cnt = alert_cnt + 1
         print("revive state",alert_cnt)
-        a = pyautogui.locateCenterOnScreen('full_img/asus/revive.png', grayscale=True, region=(337,145,761,580))
+        a = pyautogui.locateCenterOnScreen('full_img/revive.png', grayscale=True, region=(611,296,769,590)) #, region=(337,145,761,580)
         if a != None:
             print(a)
             pyautogui.click(a)
@@ -110,14 +111,14 @@ while(1):
     while(alert_flag == False):
         alert_cnt = alert_cnt + 1
         print("repair state",alert_cnt)
-        a = pyautogui.locateOnScreen('full_img/asus/repair_inactive.png', grayscale=True, region=(476,677,455,59))
+        a = pyautogui.locateOnScreen('full_img/repair_inactive.png', grayscale=True, region=(752,832,470,60)) #, region=(476,677,455,59)
         # EXIT CONDITION
         if a != None:
             print("repear done")
             alert_cnt = 0
             break
         sleep(1)
-        a = pyautogui.locateOnScreen('full_img/asus/repair_ongoing_mini.png', grayscale=True, region=(476,677,455,59))
+        a = pyautogui.locateOnScreen('full_img/repair_ongoing_mini.png', grayscale=True, region=(752,832,470,60)) #, region=(476,677,455,59)
         if a == None:
             sleep(2)
             pyautogui.typewrite([btn_repair], interval=1)
