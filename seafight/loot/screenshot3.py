@@ -78,9 +78,20 @@ while(1):
     while(alert_flag == False):
         alert_cnt = alert_cnt + 1
         print("hit target state",alert_cnt)
-        a = pyautogui.locateOnScreen('full_img/stop_active.png', grayscale=True, region=system_spec.main_bar)
+        # TRAVET TO SHIP
+        if alert_cnt % 7 == 0:
+            a = pyautogui.locateAllOnScreen('full_img/yellow_dot.png', grayscale=False, limit = 1, region=system_spec.game_screen)
+            pos = []
+            for i in a:
+                pos.append(i)
+            if pos != []:
+                sleep(1)
+                print("click yellow dot")
+                pyautogui.click(pos[0][0],pos[0][1]+50)
+
+        b = pyautogui.locateOnScreen('full_img/stop_active.png', grayscale=True, region=system_spec.main_bar)
         # EXIT CONDITION
-        if a == None:
+        if b == None:
             print("kill done")
             alert_cnt = 0
             break
